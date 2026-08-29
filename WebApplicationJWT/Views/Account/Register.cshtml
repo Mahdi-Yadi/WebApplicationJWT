@@ -1,0 +1,52 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "ثبت‌نام کاربر جدید";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-primary text-white text-center py-3">
+                <h4 class="mb-0">📝 ایجاد حساب کاربری</h4>
+            </div>
+            <div class="card-body p-4">
+
+                <form asp-action="Register" method="post">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Username" class="form-label"></label>
+                        <input asp-for="Username" class="form-control" placeholder="نام کاربری خود را وارد کنید..." autocomplete="off" />
+                        <span asp-validation-for="Username" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" placeholder="رمز عبور..." />
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ConfirmPassword" class="form-label"></label>
+                        <input asp-for="ConfirmPassword" class="form-control" placeholder="تکرار رمز عبور..." />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">ثبت‌نام</button>
+                    </div>
+                </form>
+
+            </div>
+            <div class="card-footer text-center py-3 bg-light">
+                <span class="text-muted">قبلاً ثبت‌نام کرده‌اید؟</span>
+                <a asp-action="Login" class="text-decoration-none fw-bold me-1">ورود به حساب</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

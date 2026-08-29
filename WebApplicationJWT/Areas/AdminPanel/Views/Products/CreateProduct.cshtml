@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "ثبت محصول جدید";
+}
+
+<div class="container mt-4" style="max-width: 500px;">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">افزودن محصول (مخصوص مدیر)</h4>
+        </div>
+        <div class="card-body text-end">
+
+            @if (ViewBag.Success != null)
+            {
+                <div class="alert alert-success">@ViewBag.Success</div>
+            }
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger">@ViewBag.Error</div>
+            }
+
+            <form asp-action="CreateProduct" method="post">
+                <div class="mb-3">
+                    <label class="form-label">نام محصول:</label>
+                    <input type="text" name="name" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">قیمت (تومان):</label>
+                    <input type="number" name="price" class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-success w-100">ثبت محصول</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+﻿@model List<UserViewModel>
+
+@{
+    ViewData["Title"] = "مدیریت کاربران";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>👥 مدیریت کاربران سیستم</h2>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover table-striped mb-0 text-center align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>نام کاربری</th>
+                        <th>نقش</th>
+                        <th>مجوزها (Permissions)</th>
+                        <th>تاریخ ثبت‌نام</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@user.Id</td>
+                                <td class="fw-bold">@user.Username</td>
+                                <td>
+                                    <span class="badge @(user.Role == "Admin" ? "bg-danger" : "bg-info")">
+                                        @user.Role
+                                    </span>
+                                </td>
+                                <td>
+                                    @if (user.Permissions != null && user.Permissions.Any())
+                                    {
+                                        foreach (var p in user.Permissions)
+                                        {
+                                            <span class="badge bg-secondary me-1">@p</span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted small">بدون مجوز</span>
+                                    }
+                                </td>
+                                <td>@user.CreatedAt.ToLocalTime().ToString("yyyy/MM/dd HH:mm")</td>
+                                <td>
+                                    <a asp-area="AdminPanel" asp-controller="Users" asp-action="Sessions" asp-route-username="@user.Username" class="btn btn-sm btn-outline-info me-1">
+                                        📱 نشست‌ها
+                                    </a>
+                                    <a asp-area="AdminPanel" asp-controller="Users" asp-action="Edit" asp-route-username="@user.Username" class="btn btn-sm btn-warning me-1">
+                                        ✏️ ویرایش
+                                    </a>
+                                    <form asp-area="AdminPanel" asp-controller="Users" asp-action="Delete" asp-route-username="@user.Username" method="post" class="d-inline" onsubmit="return confirm('آیا از حذف این کاربر مطمئن هستید؟');">
+                                        <button type="submit" class="btn btn-sm btn-danger">🗑️ حذف</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="py-4 text-muted">هیچ کاربری یافت نشد.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

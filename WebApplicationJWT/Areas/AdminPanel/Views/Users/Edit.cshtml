@@ -1,0 +1,69 @@
+﻿@model UpdateUserViewModel
+
+@{
+    ViewData["Title"] = "ویرایش کاربر " + Model.Username;
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-warning text-dark">
+            <h4 class="mb-0">✏️ ویرایش کاربر: @Model.Username</h4>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Edit" asp-route-username="@Model.Username" method="post">
+                <input type="hidden" asp-for="Username" />
+
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="mb-3">
+                    <label class="form-label font-weight-bold">نقش کاربر (Role):</label>
+                    <select asp-for="Role" class="form-select">
+                        <option value="User">User (کاربر عادی)</option>
+                        <option value="Admin">Admin (مدیر سیستم)</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label font-weight-bold">تغییر رمز عبور (در صورت نیاز):</label>
+                    <input asp-for="NewPassword" type="password" class="form-control" placeholder="رمز عبور جدید را وارد کنید..." />
+                    <small class="text-muted">در صورتی که نمی‌خواهید رمز عبور تغییر کند، این فیلد را خالی بگذارید.</small>
+                </div>
+
+                <hr />
+
+                <div class="mb-3">
+                    <label class="form-label font-weight-bold">دسترسی‌ها و مجوزها (Permissions):</label>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="SelectedPermissions" value="permissions.users.view" id="p1"
+                        @(Model.SelectedPermissions.Contains("permissions.users.view") ? "checked" : "") />
+                        <label class="form-check-label" for="p1">
+                            مشاهده کاربران (permissions.users.view)
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="SelectedPermissions" value="permissions.users.manage" id="p2"
+                        @(Model.SelectedPermissions.Contains("permissions.users.manage") ? "checked" : "") />
+                        <label class="form-check-label" for="p2">
+                            مدیریت و ویرایش کاربران (permissions.users.manage)
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="SelectedPermissions" value="permissions.users.delete" id="p3"
+                        @(Model.SelectedPermissions.Contains("permissions.users.delete") ? "checked" : "") />
+                        <label class="form-check-label" for="p3">
+                            حذف کاربران (permissions.users.delete)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success me-2">ذخیره تغییرات</button>
+                    <a asp-action="UsersList" class="btn btn-secondary">بازگشت به لیست</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplicationJWT</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplicationJWT.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area=""
+                    asp-controller="Home" asp-action="Index">
+                    Web Application JWT
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">خانه</a>
+                        </li>
+
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="UserPanel"
+                                   asp-controller="Home" asp-action="Dashboard">داشبورد</a>
+                            </li>
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-danger fw-bold" asp-area="AdminPanel"
+                                       asp-controller="Home" asp-action="Index">پنل مدیریت</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-info fw-bold" asp-area="AdminPanel"
+                                       asp-controller="Products" asp-action="ProductList">لیست محصولات</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-info fw-bold" asp-area="AdminPanel"
+                                       asp-controller="Users" asp-action="UsersList">لیست کاربران</a>
+                                </li>
+                            }
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-warning fw-bold"
+                               asp-controller="Products" asp-action="ProductList">محصولات</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav align-items-center gap-2">
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            var profilePic = User.FindFirst("ProfilePic")?.Value;
+                            if (!string.IsNullOrEmpty(profilePic))
+                            {
+                                <li class="nav-item">
+                                    <img src="@profilePic" alt="Profile" width="36" height="36" class="rounded-circle border" />
+                                </li>
+                            }
+
+                            <li class="nav-item">
+                                <span class="fw-bold">سلام @(User.FindFirst("FullName")?.Value ?? User.Identity.Name)!</span>
+                            </li>
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <span class="badge bg-danger">مدیر سیستم</span>
+                                </li>
+                            }
+
+                            <li class="nav-item ms-2">
+                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">خروج</button>
+                                </form>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="UserPanel"
+                                   asp-controller="Account" asp-action="Sessions">نشست‌های من</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">ورود</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-primary btn-sm ms-2" asp-controller="Account" asp-action="Register">ثبت‌نام</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted py-3">
+        <div class="container text-center">
+            &copy; 2026 - WebApplicationJWT
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

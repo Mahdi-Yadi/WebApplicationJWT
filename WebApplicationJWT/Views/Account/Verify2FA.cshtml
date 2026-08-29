@@ -1,0 +1,53 @@
+﻿@model Verify2FaViewModel
+
+@{
+    ViewData["Title"] = "تایید ورود دو مرحله‌ای";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-warning text-dark text-center py-3">
+                    <h4 class="mb-0 font-weight-bold">🔐 تایید ورود دو مرحله‌ای</h4>
+                </div>
+                <div class="card-body p-4">
+
+                    @if (!string.IsNullOrEmpty(ViewBag.InfoMessage))
+                    {
+                        <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
+                            <small>@ViewBag.InfoMessage</small>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(ViewBag.TestOtpCode))
+                    {
+                        <div class="alert alert-secondary text-center">
+                            <small class="text-muted d-block mb-1">کد تست (محیط توسعه):</small>
+                            <span class="badge bg-dark font-monospace fs-5">@ViewBag.TestOtpCode</span>
+                        </div>
+                    }
+
+                    <form asp-action="Verify2FA" method="post">
+                        <input type="hidden" asp-for="Username" />
+                        <input type="hidden" asp-for="TwoFactorToken" />
+
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-4 text-center">
+                            <label asp-for="Code" class="form-label font-weight-bold">کد ۶ رقمی ارسال شده را وارد کنید:</label>
+                            <input asp-for="Code" class="form-control form-control-lg text-center font-monospace tracking-widest"
+                                   placeholder="000000" maxlength="6" autocomplete="off" autofocus />
+                            <span asp-validation-for="Code" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-warning btn-lg fw-bold">تایید و ورود به سیستم</button>
+                            <a asp-action="Login" class="btn btn-outline-secondary">انصراف و بازگشت</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

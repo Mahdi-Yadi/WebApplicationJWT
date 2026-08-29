@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AspireApp/AspireApp.AppHost/AspireApp.AppHost.csproj" />
+  <Project Path="AspireApp/AspireApp.ServiceDefaults/AspireApp.ServiceDefaults.csproj" />
+  <Project Path="WebApplicationAPI/WebApplicationAPI.csproj" />
+  <Project Path="WebApplicationJWT/WebApplicationJWT.csproj" />
+</Solution>

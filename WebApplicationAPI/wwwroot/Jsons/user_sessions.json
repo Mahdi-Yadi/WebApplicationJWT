@@ -1,0 +1,92 @@
+[
+  {
+    "SessionId": "fdee53464a5b4d449d03233a6d954e5f",
+    "Username": "mahdi",
+    "RefreshToken": "mtcvnvBcn6qN0MBMUSQSwbL06ueCnWwnqF2ASN/cPhg=",
+    "UserAgent": "",
+    "CreatedAt": "2026-08-29T11:51:41.5557719Z",
+    "LastActivity": "2026-08-29T11:51:41.5557721Z",
+    "ExpiresAt": "2026-09-05T11:51:41.5557724Z",
+    "IsRevoked": true
+  },
+  {
+    "SessionId": "9394b66b4eec4ce2a293ed7a22b6a127",
+    "Username": "mahdi",
+    "RefreshToken": "YQ1rauVW6XylD\u002B0sWP/C5wlnp6k/KjKsbrOUnCoGbOQ=",
+    "UserAgent": "",
+    "CreatedAt": "2026-08-29T11:53:32.847912Z",
+    "LastActivity": "2026-08-29T12:12:44.9737306Z",
+    "ExpiresAt": "2026-09-05T12:12:44.9737307Z",
+    "IsRevoked": true
+  },
+  {
+    "SessionId": "b166d532a87044a8b20097bac6e48d92",
+    "Username": "mahdi",
+    "RefreshToken": "sIG1mkHqq3zTpHrD4sY7iHFjbAl5DJ70\u002B9cGarV/l54=",
+    "UserAgent": "",
+    "CreatedAt": "2026-08-29T12:12:48.546283Z",
+    "LastActivity": "2026-08-29T12:12:48.5462831Z",
+    "ExpiresAt": "2026-09-05T12:12:48.5462833Z",
+    "IsRevoked": true
+  },
+  {
+    "SessionId": "75bb5f54da494e419bbb2955683d9b98",
+    "Username": "mahdi",
+    "RefreshToken": "vot7pDJT0fbp3xrInZmZlC38TBEzOFH38vpRFqCBfMM=",
+    "UserAgent": "",
+    "CreatedAt": "2026-08-29T12:25:30.0318658Z",
+    "LastActivity": "2026-08-29T12:27:13.152068Z",
+    "ExpiresAt": "2026-09-05T12:27:13.1520681Z",
+    "IsRevoked": true
+  },
+  {
+    "SessionId": "95029083d4da4ecd8eaadd246b1ac2fc",
+    "Username": "mahdi",
+    "RefreshToken": "1tqjpCNYauZ8PPpQQ\u002BobOLyXyrtp6NBVq6Y7wKKAh4E=",
+    "UserAgent": "",
+    "CreatedAt": "2026-08-29T12:35:44.4189258Z",
+    "LastActivity": "2026-08-29T12:35:44.4189258Z",
+    "ExpiresAt": "2026-09-05T12:35:44.418926Z",
+    "IsRevoked": true
+  },
+  {
+    "SessionId": "a6d93e1d88ca4efa977548bea5b9b3b3",
+    "Username": "mahdi",
+    "RefreshToken": "AB\u002BO6viunqaSjsoDMuirBhI3fxbBZe5bGePQWpwPAJs=",
+    "UserAgent": "",
+    "CreatedAt": "2026-08-29T12:48:51.6154807Z",
+    "LastActivity": "2026-08-29T12:50:10.7979171Z",
+    "ExpiresAt": "2026-09-05T12:50:10.7979171Z",
+    "IsRevoked": true
+  },
+  {
+    "SessionId": "137241c539e64f1d93bcfaab014b07ff",
+    "Username": "mahdi",
+    "RefreshToken": "KOW79BkXc\u002BAukn4uJCX9nqjytRbZ40rKIHRtIe4Gcno=",
+    "UserAgent": "",
+    "CreatedAt": "2026-08-29T12:51:55.4170403Z",
+    "LastActivity": "2026-08-29T12:53:34.4378416Z",
+    "ExpiresAt": "2026-09-05T12:53:34.4378418Z",
+    "IsRevoked": true
+  },
+  {
+    "SessionId": "0737f8af40fa43c9b7983e6a55134f94",
+    "Username": "mahdi",
+    "RefreshToken": "OEDRXBlZoBD90\u002BhMFM16eeZzBLeRYfjEaATnQScQdqs=",
+    "UserAgent": "",
+    "CreatedAt": "2026-08-29T12:55:44.3502038Z",
+    "LastActivity": "2026-08-29T12:58:52.8448588Z",
+    "ExpiresAt": "2026-09-05T12:58:52.8448589Z",
+    "IsRevoked": true
+  },
+  {
+    "SessionId": "55f59f253a8b4bbf9cbf066e141b4bc1",
+    "Username": "mahdi",
+    "RefreshToken": "5PuE07jMz5uBxvtScK301j\u002B1uUi2O94/wDeQ8yq1heA=",
+    "UserAgent": "",
+    "CreatedAt": "2026-08-29T13:00:08.6273839Z",
+    "LastActivity": "2026-08-29T13:00:08.6273841Z",
+    "ExpiresAt": "2026-09-05T13:00:08.6273843Z",
+    "IsRevoked": false
+  }
+]

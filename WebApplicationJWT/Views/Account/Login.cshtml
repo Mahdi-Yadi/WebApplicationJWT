@@ -1,0 +1,30 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "ورود از طریق سرور MVC";
+}
+
+<div style="max-width: 400px; margin: 50px auto; text-align: right;">
+    <h2>ورود به حساب (روش سمت سرور)</h2>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div style="color: red;">
+            @Html.ValidationSummary(false)
+        </div>
+    }
+
+    <form asp-action="Login" method="post">
+        <div>
+            <label>نام کاربری:</label>
+            <input asp-for="Username" class="form-control" value="mahdi" />
+        </div>
+        <br />
+        <div>
+            <label>رمز عبور:</label>
+            <input asp-for="Password" type="password" class="form-control" value="123456" />
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">ورود به سیستم</button>
+    </form>
+</div>

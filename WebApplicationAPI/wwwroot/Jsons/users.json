@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 1,
+    "Username": "mahdi",
+    "PasswordHash": "AQAAAAIAAYagAAAAEJFYL0Kd7KpzS5oEZ7FNmlM4QNruXzmlXu5\u002Bmd7YUKGqpXr\u002B5M1mbPXOVMtmlfqh4g==",
+    "Role": "Admin",
+    "Permissions": [
+      "permissions.users.view",
+      "permissions.users.manage",
+      "permissions.users.delete"
+    ],
+    "CreatedAt": "2026-08-29T12:35:41.444513Z"
+  }
+]

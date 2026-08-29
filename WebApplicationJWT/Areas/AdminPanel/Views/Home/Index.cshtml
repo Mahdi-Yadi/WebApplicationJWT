@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "پنل مدیریت";
+}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <div class="card shadow-sm border-danger">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0">پنل مدیریت سیستم (Admin Only)</h4>
+        </div>
+        <div class="card-body text-end">
+            <div class="alert alert-warning" role="alert">
+                <strong>سطح دسترسی:</strong> مدیر ارشد
+            </div>
+            <p class="card-text">@ViewBag.Message</p>
+        </div>
+    </div>
+</div>

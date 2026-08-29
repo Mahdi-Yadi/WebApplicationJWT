@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "داشبورد کاربر";
+}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">داشبورد کاربری</h4>
+        </div>
+        <div class="card-body text-end">
+            <h5 class="card-title">خوش آمدید، @ViewBag.FullName</h5>
+            <p class="card-text text-muted">پاسخ دریافتی از مسیر حفاظت‌شده API:</p>
+
+            <div class="bg-light p-3 rounded border">
+                <code>@ViewBag.Message</code>
+            </div>
+        </div>
+    </div>
+</div>

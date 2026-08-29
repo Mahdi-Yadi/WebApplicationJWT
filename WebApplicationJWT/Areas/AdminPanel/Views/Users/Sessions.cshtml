@@ -1,0 +1,64 @@
+﻿@model List<UserSessionViewModel>
+
+@{
+    ViewData["Title"] = "نشست‌های کاربر " + ViewBag.TargetUsername;
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>📱 نشست‌های فعال و منقضی کاربر: <span class="text-primary">@ViewBag.TargetUsername</span></h2>
+        <a asp-action="UsersList" class="btn btn-secondary">بازگشت به لیست کاربران</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover table-striped mb-0 text-center align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>دستگاه / مرورگر (User Agent)</th>
+                        <th>تاریخ ایجاد</th>
+                        <th>آخرین فعالیت</th>
+                        <th>تاریخ انقضا</th>
+                        <th>وضعیت</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var session in Model)
+                        {
+                            <tr>
+                                <td class="text-start text-break" style="max-width: 300px;">
+                                    <small class="font-monospace">@session.UserAgent</small>
+                                </td>
+                                <td>@session.CreatedAt.ToLocalTime().ToString("yyyy/MM/dd HH:mm")</td>
+                                <td>@session.LastActivity.ToLocalTime().ToString("yyyy/MM/dd HH:mm")</td>
+                                <td>@session.ExpiresAt.ToLocalTime().ToString("yyyy/MM/dd HH:mm")</td>
+                                <td>
+                                    @if (session.IsActive)
+                                    {
+                                        <span class="badge bg-success">فعال</span>
+                                    }
+                                    else if (session.IsRevoked)
+                                    {
+                                        <span class="badge bg-danger">لغو شده</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">منقضی شده</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="py-4 text-muted">هیچ نشستی برای این کاربر یافت نشد.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

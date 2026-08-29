@@ -1,0 +1,84 @@
+﻿@model List<UserSessionViewModel>
+
+@{
+    ViewData["Title"] = "مدیریت نشست‌های فعال (دستگاه‌ها)";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>📱 مدیریت نشست‌های فعال</h2>
+        @if (Model.Any(s => s.IsActive))
+        {
+            <form asp-area="UserPanel" asp-controller="Account" asp-action="RevokeAll" method="post" onsubmit="return confirm('آیا از خروج از تمامی دستگاه‌ها مطمئن هستید؟');">
+                <button type="submit" class="btn btn-danger">خروج از تمامی دستگاه‌ها</button>
+            </form>
+        }
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>دستگاه / مرورگر</th>
+                        <th>زمان ایجاد</th>
+                        <th>آخرین فعالیت</th>
+                        <th>وضعیت</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center text-muted py-3">هیچ نشستی یافت نشد.</td>
+                        </tr>
+                    }
+                    @foreach (var session in Model)
+                    {
+                        <tr class="@(session.IsActive ? "" : "table-secondary opacity-75")">
+                            <td>
+                                <code>@session.UserAgent</code>
+                            </td>
+                            <td>@session.CreatedAt.ToLocalTime().ToString("yyyy/MM/dd - HH:mm")</td>
+                            <td>@session.LastActivity.ToLocalTime().ToString("yyyy/MM/dd - HH:mm")</td>
+                            <td>
+                                @if (session.IsActive)
+                                {
+                                    <span class="badge bg-success">فعال</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">منقضی / لغو شده</span>
+                                }
+                            </td>
+                            <td>
+                                @if (session.IsActive)
+                                {
+                                    <form asp-area="UserPanel" asp-controller="Account" asp-action="RevokeSession" method="post" class="d-inline">
+                                        <input type="hidden" name="sessionId" value="@session.SessionId" />
+                                        <button type="submit" class="btn btn-sm btn-outline-warning">لغو نشست</button>
+                                    </form>
+                                }
+
+                                <form asp-area="UserPanel" asp-controller="Account" asp-action="DeleteSession" method="post" class="d-inline" onsubmit="return confirm('حذف کامل شود؟');">
+                                    <input type="hidden" name="sessionId" value="@session.SessionId" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">حذف</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
