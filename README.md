@@ -57,8 +57,8 @@ If the AI flags a login as suspicious (but not overtly malicious), the system do
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/YourUsername/YourRepositoryName.git](https://github.com/YourUsername/YourRepositoryName.git)
-   cd YourRepositoryName
+   git clone [https://github.com/Mahdi-Yadi/WebApplicationJWT.git](https://github.com/Mahdi-Yadi/WebApplicationJWT.git)
+   cd WebApplicationJWT
 Restore Packages:
 
 Bash
